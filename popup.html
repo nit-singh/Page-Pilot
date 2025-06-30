@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SmartPage Tools</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 15px;
+    background: linear-gradient(135deg, #1e1e2f, #2d2d44);
+    color: #fff;
+    width: 260px;
+    border-radius: 10px;
+  }
+  .chat-window {
+  background: #1e1e2f;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.chat-bubble {
+  max-width: 85%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.user-msg {
+  background: #3a3a5a;
+  color: #fff;
+  align-self: flex-end;
+  margin-left: auto;
+  border-bottom-right-radius: 0;
+}
+
+.bot-msg {
+  background: #2e8b57;
+  color: #fff;
+  align-self: flex-start;
+  margin-right: auto;
+  border-bottom-left-radius: 0;
+}
+
+.chat-input {
+  display: flex;
+  gap: 5px;
+}
+
+.chat-input textarea {
+  flex: 1;
+  padding: 8px;
+  resize: none;
+  font-size: 13px;
+  border-radius: 6px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+}
+
+.chat-input button {
+  background: #1db954;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+  .tab-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.group-btn, .ungroup-btn {
+  flex: 1;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+}
+
+.group-btn {
+  background-color: #4CAF50; /* Green */
+}
+
+.ungroup-btn {
+  background-color: #f44336; /* Red */
+}
+
+
+  .switch-label {
+    background-color: #3b3b55;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+  }
+
+  .switch-label:hover {
+    background-color: #4a4a6a;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 22px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #aaa;
+    transition: 0.4s;
+    border-radius: 22px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: #1db954;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+
+  #result {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #eee;
+  }
+
+  .timer {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #ccc;
+  }
+
+  p {
+    font-size: 12px;
+    color: #aaa;
+    text-align: center;
+    margin-top: 10px;
+  }
+</style>
+
+</head>
+<body>
+  <div class="switch-label">
+    <span>Dark Mode</span>
+    <label class="switch">
+      <input type="checkbox" id="darkModeToggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="switch-label">
+    <span>Word Count</span>
+    <label class="switch">
+      <input type="checkbox" id="wordCountToggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+
+ <!--<div class="switch-label">
+  <span>Focus Mode</span>
+  <label class="switch">
+    <input type="checkbox" id="focusToggle">
+    <span class="slider"></span>
+  </label>
+</div>-->
+<div class="tab-buttons">
+  <button id="groupTabsBtn" class="group-btn">Group Tabs</button>
+  <button id="ungroupTabsBtn" class="ungroup-btn">Ungroup Tabs</button>
+</div>
+
+
+<div class="switch-label">
+  <span>Screenshot</span>
+  <button id="screenshotBtn" style="margin-left:auto;">Click to download</button>
+</div>
+
+<div class="ai-section">
+  <h3 style="text-align:center;">OpenRouter Chat</h3>
+  <div id="orChatWindow" class="chat-window"></div>
+  <div class="chat-input">
+    <textarea id="orPrompt" placeholder="Type your message..." rows="2"></textarea>
+    <button id="orSendBtn">Ask</button>
+  </div>
+</div>
+
+
+
+
+  <div id="result"></div>
+  <!--<div class="timer">Session Time: <span id="sessionTimer">00:00</span></div>-->
+
+  <p style="margin-top:10px; font-size:12px; color:gray;">
+   <bold><button> Select text on Page and Right-Click to translate</button> </bold>
+  </p>
+  <script src="popup.js"></script>
+</body>
+</html>
