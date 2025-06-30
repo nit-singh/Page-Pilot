@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const OR_KEY = "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";
+  const OR_KEY = "your_api_key";
 
   // === AI Chat ===
   const orSendBtn = document.getElementById('orSendBtn');
