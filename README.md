@@ -8,7 +8,7 @@
 - 📸 Screenshot Capture  
 - 🧠 AI Chat Assistant (powered by OpenRouter)  
 - 🧹 Tab Grouping & Ungrouping  
-- 🌐 Translator (Coming Soon)
+- 🌐 Translator
 
 ---
 
